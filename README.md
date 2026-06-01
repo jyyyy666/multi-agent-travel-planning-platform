@@ -35,9 +35,10 @@ An AI-powered travel planning platform built with LangGraph, LangChain, and tool
 ├── tools/            # External tools for search, maps, routes, POI, and saving
 ├── utils/            # Helper functions
 ├── webrun.py         # Gradio web app entry point
-├── req.txt           # Dependency list
+├── requirements.txt           # Dependency list
 ├── README.md         # Project documentation
 ├── travel.png        # LangGraph workflow visualization
+├── travel-agent-demo.png
 ├── WorkFlow.png      # System interaction workflow
 ```
 
@@ -60,7 +61,7 @@ After startup, the Gradio web interface will open automatically. Users can direc
 
 ## Workflow Architecture Diagram
 
-![LangGraph Travel Planning Agent](travel.png)
+![LangGraph Travel Planning Agent](travel-agent-demo.png)
 
 ## Main Modules and Tools Description
 
@@ -94,22 +95,6 @@ After startup, the Gradio web interface will open automatically. Users can direc
 ### webrun.py
 -  Gradio Web interface entry point, integrating conversations, debug information display, etc.
 
-## Workflow Architecture Diagram
-### Agent Workflow
-
-```text
-User Request
-      ↓
-Travel Agent
-      ↓
-Tool Selection
-      ↓
-Web Search / Attractions / Transportation / Nearby POI
-      ↓
-Result Aggregation
-      ↓
-Travel Itinerary Generation
-```
 
 ## Future Work
 - If you encounter issues like invalid API KEYs or network connection problems, please check the `.env` configuration and network environment.
