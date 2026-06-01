@@ -47,7 +47,7 @@ An AI-powered travel planning platform built with LangGraph, LangChain, and tool
 2. Install the required dependencies:
 
    ```bash
-   pip install -r req.txt
+   pip install -r requirements.txt
    ```
 
 ## How to Run
@@ -94,48 +94,24 @@ After startup, the Gradio web interface will open automatically. Users can direc
 ### webrun.py
 -  Gradio Web interface entry point, integrating conversations, debug information display, etc.
 
-## Main API/Tool Parameters and Return Values Description
+## Workflow Architecture Diagram
+### Agent Workflow
 
-### 1. Attraction Information Query (tools/attractions.py)
-- **Function**: `get_attractions_information(destination: str) -> dict`
-- **Parameters**:
-  - `destination`: Destination name (e.g., "Changsha"), must be a specific city or town name.
-- **Returns**:
-  - `overview`: Destination overview
-  - `scenic_list`: List of attractions (including name, introduction, opening hours, etc.)
+```text
+User Request
+      ↓
+Travel Agent
+      ↓
+Tool Selection
+      ↓
+Web Search / Attractions / Transportation / Nearby POI
+      ↓
+Result Aggregation
+      ↓
+Travel Itinerary Generation
+```
 
-### 2. Route Planning (tools/transportation.py)
-- **Function**: `route_planning(origin: str, destination: str, origin_city_code: str, dest_city_code: str) -> dict`
-- **Parameters**:
-  - `origin`: Coordinates (latitude and longitude) of the starting point (e.g., "113.129362,29.371356")
-  - `destination`: Coordinates of the destination
-  - `origin_city_code`: Origin city code
-  - `dest_city_code`: Destination city code
-- **Returns**:
-  - `origin`, `destination`, `walking_distance`, `taxi_cost`, `public_transport_options_list` (list of public transport options)
-
-### 3. Nearby POI Query (tools/nearby.py)
-- **Function**: `search_nearby_poi(location: str, city: str, types: str, keyword: str, radius: int, offset: int, page: int)`
-- **Parameters**:
-  - `location`: Coordinates of the center point
-  - `city`: City code
-  - `types`: POI types (e.g., "Chinese Restaurant|Hotel")
-  - `keyword`: Keyword
-  - `radius`: Search radius (meters)
-  - `offset`: Number of items per page
-  - `page`: Page number
-- **Returns**:
-  - `pois`: List of POIs (including name, type, address, distance, rating, price, etc.)
-
-### 4. Save Information (tools/save.py)
-- **Function**: `save_info_and_clear_history(information_to_save: str) -> Tuple[str, str]`
-- **Parameters**:
-  - `information_to_save`: Information to be saved
-- **Returns**:
-  - `content`: Save result prompt
-  - `artifact`: Actually saved information
-
-## FAQ and Improvement Suggestions
+## Future Work
 - If you encounter issues like invalid API KEYs or network connection problems, please check the `.env` configuration and network environment.
 - If you need to support more cities or attractions, you can expand the related tool modules.
 - Suggestions and feedback are welcome to help us continuously improve the bot's features!
