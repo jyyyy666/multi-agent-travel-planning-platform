@@ -61,7 +61,41 @@ After startup, the Gradio web interface will open automatically. Users can direc
 
 ## Workflow Architecture Diagram
 
-![LangGraph Travel Planning Agent](travel-agent-demo.png)
+## Multi-Agent Workflow
+
+```mermaid
+flowchart TD
+
+    A[User Request]
+
+    A --> B[Travel Agent]
+
+    B --> C{Need Tool Call?}
+
+    C -->|Destination Search| D[Web Search Tool]
+
+    C -->|Attraction Search| E[Attraction Tool]
+
+    C -->|Location Lookup| F[Geolocation Tool]
+
+    C -->|Transportation Planning| G[Route Planning Tool]
+
+    C -->|Nearby Services| H[Restaurant & Hotel Search Tool]
+
+    D --> I[Travel Agent]
+    E --> I
+    F --> I
+    G --> I
+    H --> I
+
+    I --> J[Generate Travel Itinerary]
+
+    J --> K{User Satisfied?}
+
+    K -->|No| B
+
+    K -->|Yes| L[Final Travel Plan]
+```
 
 ## Main Modules and Tools Description
 
