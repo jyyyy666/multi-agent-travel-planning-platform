@@ -59,7 +59,6 @@ python webrun.py
 ```
 After startup, the Gradio web interface will open automatically. Users can directly input their requirements to chat with the bot.
 
-## Workflow Architecture Diagram
 
 ## Multi-Agent Workflow
 
